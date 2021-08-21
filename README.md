@@ -12,7 +12,7 @@ Please make sure that this structure is satisfied:<br />
 If you are running this project for the first time make sure you are in the project-builder directory and:<br />
 
 1. create docker micro_network<br />
-docker network create micro_networtk<br />
+docker network create micro_network<br />
 
 2. Build the docker-compose.deploy file using<br />
 docker-compose -f .\docker-compose.deploy.yml build<br />
