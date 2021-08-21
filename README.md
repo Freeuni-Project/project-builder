@@ -21,11 +21,9 @@ docker-compose -f docker-compose.deploy.yml up -d<br />
 docker exec -it cuser-service flask db init<br />
 docker exec -it cuser-service flask db migrate<br />
 docker exec -it cuser-service flask db upgrade<br />
-
 docker exec -it cproject-service flask db init<br />
 docker exec -it cproject-service flask db migrate<br />
 docker exec -it cproject-service flask db upgrade<br />
-
 docker exec -it cticket-service flask db init<br />
 docker exec -it cticket-service flask db migrate<br />
 docker exec -it cticket-service flask db upgrade<br />
