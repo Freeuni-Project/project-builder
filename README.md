@@ -1,12 +1,12 @@
 (Python 3.9 is required for this project to run smoothly)<br />
 Please make sure that this structure is satisfied:<br />
 -Folder<br />
-  -project-service <br />
-  -user-service<br />
-  -ticket-service<br />
-  .<br />
-  .<br />
-  -project-builder<br />
+    -project-service <br />
+    -user-service<br />
+    -ticket-service<br />
+    .<br />
+    .<br />
+    -project-builder<br />
 
 <br />
 If you are running this project for the first time make sure you are in the project-builder directory and:<br />
