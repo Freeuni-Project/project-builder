@@ -11,13 +11,16 @@ Please make sure that this structure is satisfied:<br />
 <br />
 If you are running this project for the first time make sure you are in the project-builder directory and:<br />
 
-1. Build the docker-compose.deploy file using<br />
+1. create docker micro_network<br />
+docker network create micro_networtk<br />
+
+2. Build the docker-compose.deploy file using<br />
 docker-compose -f .\docker-compose.deploy.yml build<br />
 
-2. Run docker containers using (remove -d if you don't want to run it in detach mode)<br />
+3. Run docker containers using (remove -d if you don't want to run it in detach mode)<br />
 docker-compose -f docker-compose.deploy.yml up -d<br />
 
-3. For first time run we have to initialize and migrate database, please follow this steps<br />
+4. For first time run we have to initialize and migrate database, please follow this steps<br />
 docker exec -it cuser-service flask db init<br />
 docker exec -it cuser-service flask db migrate<br />
 docker exec -it cuser-service flask db upgrade<br />
