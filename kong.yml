@@ -1,0 +1,32 @@
+_format_version: "2.1"
+
+services:
+  - name: gist-service
+    url: https://api.github.com
+    routes:
+      - name: gists-route
+        paths:
+          - /gists
+
+  - name: user-service
+    url: http://host.docker.internal:5001
+    routes:
+      - name: user-service-route
+        paths:
+          - /user
+
+
+  - name: project-service
+    url: http://host.docker.internal:5002
+    routes:
+      - name: project-service-route
+        paths:
+          - /project
+
+
+  - name: ticket-service
+    url: http://host.docker.internal:5003
+    routes:
+      - name: ticket-service-route
+        paths:
+          - /ticket

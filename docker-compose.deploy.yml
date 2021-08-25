@@ -6,7 +6,14 @@ volumes:
   projectdb_vol:
   ticketdb_vol:
 
+#networks:
+#  micro_network:
+#    external:
+#      name: micro_network
 networks:
+  default:
+    external: true
+    name: micro_network
   micro_network:
     external:
       name: micro_network
@@ -107,3 +114,24 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     restart: always
+
+  kong:
+    container_name: ckong-api-gateway
+    image: kong:latest
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+      - "0.0.0.0:8001:8001"
+      - "0.0.0.0:8444:8444"
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/usr/local/kong/declarative/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+    networks:
+      - micro_network
+    volumes:
+      - ./kong.yml:/usr/local/kong/declarative/kong.yml
