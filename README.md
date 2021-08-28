@@ -1,6 +1,6 @@
-(Python 3.9 is required for this project to run smoothly)<br />
+(Python 3.9 is required for this project to run smoothly, NPM is required if you are trying to run in locally)<br />
 Please make sure that this structure is satisfied:<br />
--Folder<br />
+-Project Directory<br />
 &nbsp;&nbsp;-project-service <br />
 &nbsp;&nbsp;-user-service<br />
 &nbsp;&nbsp;-ticket-service<br />
@@ -21,13 +21,9 @@ docker-compose -f .\docker-compose.deploy.yml build<br />
 docker-compose -f docker-compose.deploy.yml up -d<br />
 
 4. For first time run we have to initialize and migrate database, please follow this steps<br />
-docker exec -it cuser-service flask db init<br />
-docker exec -it cuser-service flask db migrate<br />
-docker exec -it cuser-service flask db upgrade<br />
-docker exec -it cproject-service flask db init<br />
-docker exec -it cproject-service flask db migrate<br />
-docker exec -it cproject-service flask db upgrade<br />
-docker exec -it cticket-service flask db init<br />
-docker exec -it cticket-service flask db migrate<br />
-docker exec -it cticket-service flask db upgrade<br />
-
+docker exec -it cbackend-service flask db init<br />
+docker exec -it cbackend-service flask db migrate<br />
+docker exec -it cbackend-service flask db upgrade<br />
+docker exec -it cstatistics-service flask db init<br />
+docker exec -it cstatistics-service flask db migrate<br />
+docker exec -it cstatistics-service flask db upgrade<br />
