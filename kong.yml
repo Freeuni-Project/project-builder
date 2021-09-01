@@ -1,32 +1,34 @@
 _format_version: "2.1"
 
 services:
-  - name: gist-service
-    url: https://api.github.com
+
+  - name: backend-service
+    url: http://host.docker.internal:5005
     routes:
-      - name: gists-route
+      - name: backend-service-route
         paths:
-          - /gists
+          - /backend
 
-  - name: user-service
-    url: http://host.docker.internal:5001
+
+  - name: statistics-service
+    url: http://host.docker.internal:5006
     routes:
-      - name: user-service-route
+      - name: statistics-service-route
         paths:
-          - /user
+          - /statistics
 
+plugins:
+  - name: jwt
+    route: backend-service-route
+    enabled: true
+    config:
+      key_claim_name: kid
+      claims_to_verify:
+        - exp
 
-  - name: project-service
-    url: http://host.docker.internal:5002
-    routes:
-      - name: project-service-route
-        paths:
-          - /project
+consumers:
+  - username: loginserverissuer
 
-
-  - name: ticket-service
-    url: http://host.docker.internal:5003
-    routes:
-      - name: ticket-service-route
-        paths:
-          - /ticket
+jwt_secrets:
+  - consumer: loginserverissuer
+    secret: "freeuni_project_secret"
