@@ -69,6 +69,7 @@ services:
     depends_on:
       - stats-api
       - project-api
+      - mail-service
       - rabbitmq
 
   stats-api:
@@ -79,6 +80,18 @@ services:
       - "5006:5006"
     depends_on:
       - stats-db
+    networks:
+      - micro_network
+    environment:
+      PYTHONUNBUFFERED: 1
+    restart: always
+
+  mail-service:
+    container_name: cmail-service
+    build:
+      context: ../mail-service
+    ports:
+      - "5007:5007"
     networks:
       - micro_network
     environment:
