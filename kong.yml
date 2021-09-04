@@ -30,8 +30,7 @@ plugins:
   - name: cors
     service: backend-service
     config:
-      origins:
-      - http://mockbin.com
+      origins: "*"
       methods:
       - GET
       - POST
