@@ -18,6 +18,37 @@ services:
           - /statistics
 
 plugins:
+  - name: cors
+    config:
+      origins:
+      - "*"
+      methods:
+        - HEAD
+        - POST
+        - GET
+        - PUT
+        - DELETE
+        - OPTIONS
+      headers:
+        - Accept
+        - Accept-Version
+        - Content-Length
+        - Content-MD5
+        - Content-Type
+        - Date
+        - Origin
+        - Access-Control-Request-Headers
+        - Access-Control-Allow-Origin
+        - Authorization
+      exposed_headers:
+        - Origin
+        - Access-Control-Request-Headers
+        - Access-Control-Allow-Origin
+        - Authorization
+      credentials: true
+      max_age: 3600
+      preflight_continue: false
+
   - name: jwt
     route: backend-service-route
     enabled: true
@@ -25,6 +56,8 @@ plugins:
       key_claim_name: kid
       claims_to_verify:
         - exp
+
+
 
 consumers:
   - username: loginserverissuer
