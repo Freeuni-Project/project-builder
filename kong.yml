@@ -32,24 +32,23 @@ plugins:
     config:
       origins: "*"
       methods:
-        - HEAD
         - GET
-        - POST
+        - HEAD
         - PUT
+        - PATCH
+        - POST
         - DELETE
-      headers:
-        - Accept
-        - Accept-Version
-        - Content-Length
-        - Content-MD5
-        - Content-Type
-        - Date
-        - X-Auth-Token
-      exposed_headers:
-        - X-Auth-Token
-      credentials: true
-      max_age: 3600
-      preflight_continue: false
+        - OPTIONS
+        headers:
+          - Origin
+          - Access-Control-Request-Headers
+          - Access-Control-Allow-Origin
+        exposed_headers:
+          - Origin
+          - Access-Control-Request-Headers
+          - Access-Control-Allow-Origin
+        preflight_continue: false
+        credentials: false
 
 consumers:
   - username: loginserverissuer
