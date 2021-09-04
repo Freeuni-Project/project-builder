@@ -26,30 +26,6 @@ plugins:
       claims_to_verify:
         - exp
 
-
-  - name: cors
-    service: backend-service
-    config:
-      origins: "*"
-      methods:
-        - GET
-        - HEAD
-        - PUT
-        - PATCH
-        - POST
-        - DELETE
-        - OPTIONS
-        headers:
-          - Origin
-          - Access-Control-Request-Headers
-          - Access-Control-Allow-Origin
-        exposed_headers:
-          - Origin
-          - Access-Control-Request-Headers
-          - Access-Control-Allow-Origin
-        preflight_continue: false
-        credentials: false
-
 consumers:
   - username: loginserverissuer
 
