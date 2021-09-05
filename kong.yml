@@ -3,12 +3,25 @@ _format_version: "2.1"
 services:
 
   - name: backend-service
-    url: http://host.docker.internal:5005
+    url: http://host.docker.internal:5005/api
     routes:
       - name: backend-service-route
         paths:
           - /backend
+    plugins:
+      - name: jwt
+        enabled: true
+        config:
+          key_claim_name: kid
+          claims_to_verify:
+            - exp
 
+  - name: backend-service-login
+    url: http://host.docker.internal:5005/auth
+    routes:
+      - name: backend-service-login-route
+        paths:
+          - /auth
 
   - name: statistics-service
     url: http://host.docker.internal:5006
@@ -16,6 +29,13 @@ services:
       - name: statistics-service-route
         paths:
           - /statistics
+    plugins:
+      - name: jwt
+        enabled: true
+        config:
+          key_claim_name: kid
+          claims_to_verify:
+            - exp
 
 plugins:
   - name: cors
@@ -49,13 +69,6 @@ plugins:
       max_age: 3600
       preflight_continue: false
 
-  - name: jwt
-    route: backend-service-route
-    enabled: true
-    config:
-      key_claim_name: kid
-      claims_to_verify:
-        - exp
 
 
 
