@@ -21,9 +21,9 @@ docker-compose -f docker-compose.yml build<br />
 docker-compose -f docker-compose.yml up -d<br />
 
 4. For first time run we have to initialize and migrate database, please follow this steps<br />
-docker exec -it cbackend-service flask db init<br />
-docker exec -it cbackend-service flask db migrate<br />
-docker exec -it cbackend-service flask db upgrade<br />
-docker exec -it cstatistics-service flask db init<br />
-docker exec -it cstatistics-service flask db migrate<br />
-docker exec -it cstatistics-service flask db upgrade<br />
+docker exec -it cproject-backend-service flask db init<br />
+docker exec -it cproject-backend-service flask db migrate<br />
+docker exec -it cproject-backend-service flask db upgrade<br />
+docker exec -it cproject-statistics-service flask db init<br />
+docker exec -it cproject-statistics-service flask db migrate<br />
+docker exec -it cproject-statistics-service flask db upgrade<br />
